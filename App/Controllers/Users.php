@@ -41,4 +41,13 @@ class Users extends BaseController
         Database::connect()->query("DELETE FROM users WHERE id=$id");
         return redirect('users');
     }
+
+    public function detail($id)
+    {
+        $data = Database::connect()->query("SELECT * FROM users WHERE id=$id")->fetch_assoc();
+        return view('users.detail', [
+            'title' => $data['name'],
+            'data'  => $data
+        ]);
+    }
 }

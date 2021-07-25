@@ -3,6 +3,17 @@ require_once APPPATH . 'Configs/App.php';
 
 $GLOBALS['base_url'] = App::$BaseUrl;
 
+if (!function_exists('addComponent')) {
+    /**
+     * include view file for templating system
+     * it can be used on based App/Controller/$1 and App/Views/$1 file
+     */
+    function addComponent($view_file)
+    {
+        include APPPATH . 'Views/' . pathFilter($view_file) . '.php';
+    }
+}
+
 if (!function_exists('pathFilter')) {
     /**
      * Filter Path '.' and Replace To Directory Separator'/'

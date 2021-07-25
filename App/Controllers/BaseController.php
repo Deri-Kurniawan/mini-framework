@@ -23,13 +23,4 @@ class BaseController
     {
         // 
     }
-
-    /**
-     * include view file for templating system
-     * it can be used on based App/Controller/$1 and App/Views/$1 file
-     */
-    public function include($view_file)
-    {
-        include APPPATH . 'Views/' . $view_file . '.php';
-    }
 }
