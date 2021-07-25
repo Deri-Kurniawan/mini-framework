@@ -1,6 +1,7 @@
 <?php
 
 require_once 'System/Request.php';
+require_once 'System/Database.php';
 
 class BaseController
 {
@@ -13,6 +14,14 @@ class BaseController
     public function __construct()
     {
         $this->request = new Request;
+    }
+
+    /**
+     * set default index if controller index not found
+     */
+    public function index()
+    {
+        // 
     }
 
     /**

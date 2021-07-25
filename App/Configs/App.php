@@ -17,7 +17,7 @@ class App
     /**
      * Your Default Controller
      */
-    public static $DefaultController = 'Home';
+    public static $DefaultController = 'Users';
 
     /**
      * Your Default Method
@@ -50,6 +50,10 @@ class App
         new Route();
     }
 }
+/**
+ * Starting Gobal Session
+ */
+session_start();
 
 /**
  * Starting your application

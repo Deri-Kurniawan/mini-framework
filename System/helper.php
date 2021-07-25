@@ -13,7 +13,7 @@ if (!function_exists('pathFilter')) {
     }
 }
 
-if (!function_exists('include')) {
+if (!function_exists('base_url')) {
     /**
      * Get you BaseUrl on App Configuration
      * @return String
@@ -22,6 +22,29 @@ if (!function_exists('include')) {
     {
         $str = $GLOBALS['base_url'] . $urlAfterBaseUrl;
         return pathFilter($str);
+    }
+}
+
+if (!function_exists('included')) {
+
+    /**
+     * @var folder value = 'c' | based on Controllers
+     * @var folder value = 'm' | based on Models
+     * @var folder value = 'v' | based on Views
+     */
+    function included(String $file, String $folder = "v")
+    {
+        $folder = strtolower($folder);
+
+        if ($folder == 'c') {
+            include APPPATH . 'Controllers/' . pathFilter($file) . '.php';
+        } else
+        if ($folder == 'm') {
+            include APPPATH . 'Models/' . pathFilter($file) . '.php';
+        }
+        if ($folder == 'v') {
+            include APPPATH . 'Views/' . pathFilter($file) . '.php';
+        }
     }
 }
 
@@ -52,29 +75,6 @@ if (!function_exists('goBack')) {
     function goBack()
     {
         return isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : $GLOBALS['base_url'];
-    }
-}
-
-if (!function_exists('include')) {
-
-    /**
-     * @var folder value = 'c' | based on Controllers
-     * @var folder value = 'm' | based on Models
-     * @var folder value = 'v' | based on Views
-     */
-    function included(String $file, String $folder = "v")
-    {
-        $folder = strtolower($folder);
-
-        if ($folder == 'c') {
-            include APPPATH . 'Controllers/' . pathFilter($file) . '.php';
-        } else
-        if ($folder == 'm') {
-            include APPPATH . 'Models/' . pathFilter($file) . '.php';
-        }
-        if ($folder == 'v') {
-            include APPPATH . 'Views/' . pathFilter($file) . '.php';
-        }
     }
 }
 
