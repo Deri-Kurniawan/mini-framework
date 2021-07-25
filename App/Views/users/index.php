@@ -10,13 +10,20 @@
 
 <body>
     <h1>User Index</h1>
-    <table>
+    <a href="<?= base_url('users.form'); ?>">+ Add Data +</a>
+    <br>
+
+    <table style="text-align: center;">
         <tr>
+            <th>NO</th>
             <th>ID</th>
             <th>NAMA</th>
         </tr>
-        <?php foreach ($data as $d) : ?>
+        <?php
+        $no = 1;
+        foreach ($data as $d) : ?>
         <tr>
+            <td><?= $no++ ?></td>
             <td><?= $d['id'] ?></td>
             <td><?= $d['nama'] ?></td>
         </tr>
