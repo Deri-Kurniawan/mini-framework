@@ -1,7 +1,18 @@
 {
-    "autoload": {
-        "psr-4": {
-            "DFramework\\": "System/"
+    "name": "mframework/mframework",
+    "type": "application",
+    "description": "Mini php framework",
+    "homepage": "https://github.com/Seldaek/monolog",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Deri Kurniawan",
+            "email": "deri.netuchi@gmail.com",
+            "homepage": "http://deri-kurniawan.gitub.io",
+            "role": "Developer"
         }
+    ],
+    "require": {
+        "php": ">=5.3.0"
     }
 }
