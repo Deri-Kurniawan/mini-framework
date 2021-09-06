@@ -1,5 +1,5 @@
 {
-    "name": "der-kurniawan/mini-framework",
+    "name": "deri-kurniawan/mini-framework",
     "description": "mini php framework",
     "require": {
         "php": ">=7.4",
