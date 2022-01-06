@@ -17,19 +17,8 @@
   <!-- receive data from view function and extract key on array as -->
   <h1><?= $title; ?></h1>
 
-  <!-- Bad example
-        do not use for js file like this
-        because '.' will change to '/';
-    -->
-  <script src="<?= base_url('public.script.js'); ?>"></script>
-
-  <!-- Good example
-        use like this
-    -->
-  <script src="<?= base_url(); ?>public/assets/js/script.js"></script>
-
   <!-- or -->
-  <script src="<?= base_url('public.assets.js'); ?>/script.js"></script>
+  <script src="<?= publicUrl('assets/js/script.js'); ?>"></script>
 </body>
 
 </html>

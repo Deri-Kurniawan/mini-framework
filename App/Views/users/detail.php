@@ -1,27 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<?= addComponent('layouts.components.header', $title) ?>
+<?= addComponent('layouts.components.navbar') ?>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+  <tr>
+    <td><?= ucfirst($data['id']) ?></td>
+    <td><?= ucfirst($data['name']) ?></td>
+  </tr>
+</table>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profile <?= $title; ?></title>
-</head>
+<a href="<?= baseUrl('users/index'); ?>">Back</a>
 
-<body>
-  <?= addComponent('layouts.components.navbar') ?>
-  <table>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-    </tr>
-    <tr>
-      <td><?= ucfirst($data['id']) ?></td>
-      <td><?= ucfirst($data['name']) ?></td>
-    </tr>
-  </table>
-
-  <a href="<?= base_url('users.index'); ?>">Back</a>
-</body>
-
-</html>
+<?= addComponent('layouts.components.footer') ?>

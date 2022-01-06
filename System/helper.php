@@ -1,14 +1,14 @@
 <?php
 require_once APPPATH . 'Configs/App.php';
 
-$GLOBALS['base_url'] = App::$BaseUrl;
+$GLOBALS['baseUrl'] = App::$BaseUrl;
 
 if (!function_exists('addComponent')) {
   /**
    * include view file for templating system
    * it can be used on based App/Controller/$1 and App/Views/$1 file
    */
-  function addComponent($view_file)
+  function addComponent($view_file, $title = 'Title not set!')
   {
     include APPPATH . 'Views/' . pathFilter($view_file) . '.php';
   }
@@ -24,14 +24,26 @@ if (!function_exists('pathFilter')) {
   }
 }
 
-if (!function_exists('base_url')) {
+if (!function_exists('baseUrl')) {
   /**
-   * Get you BaseUrl on App Configuration
+   * Get your BaseUrl on App Configuration
    * @return String
    */
-  function base_url(String $urlAfterBaseUrl = '')
+  function baseUrl(String $urlAfterBaseUrl = '')
   {
-    $str = $GLOBALS['base_url'] . $urlAfterBaseUrl;
+    $str = $GLOBALS['baseUrl'] . $urlAfterBaseUrl;
+    return pathFilter($str);
+  }
+}
+
+if (!function_exists('publicUrl')) {
+  /**
+   * Get your Public path for your assets
+   * @return String
+   */
+  function publicUrl(String $urlAfterPublicUrl = '')
+  {
+    $str = $GLOBALS['baseUrl'] . PUBLICPATH . $urlAfterPublicUrl;
     return pathFilter($str);
   }
 }
@@ -65,7 +77,7 @@ if (!function_exists('redirect')) {
    */
   function redirect($url)
   {
-    return header('location:' . $GLOBALS['base_url'] . $url);
+    return header('location:' . $GLOBALS['baseUrl'] . $url);
   }
 }
 
@@ -85,7 +97,7 @@ if (!function_exists('goBack')) {
    */
   function goBack()
   {
-    return isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : $GLOBALS['base_url'];
+    return isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : $GLOBALS['baseUrl'];
   }
 }
 

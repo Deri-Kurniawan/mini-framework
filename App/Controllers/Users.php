@@ -17,7 +17,7 @@ class Users extends BaseController
   {
     $result = $this->UsersModel->getUsers();
 
-    return view('users.index', [
+    return view('users/index', [
       'title' => 'Users Index',
       'data'  => $result
     ]);
@@ -37,7 +37,7 @@ class Users extends BaseController
     } else {
       $this->UsersModel->saveUser($name);
 
-      return redirect('users.index?status=1');
+      return redirect('users/index?status=1');
     }
   }
 
