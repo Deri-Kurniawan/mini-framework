@@ -1,53 +1,60 @@
 <?php
 
-included('BaseController', 'c');
-included('UsersModel', 'm');
+required('BaseController', 'c');
+required('UsersModel', 'm');
 
 class Users extends BaseController
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
+  private $UsersModel;
 
-    public function index()
-    {
-        $result = Database::connect()->query("SELECT * FROM users");
-        return view('users.index', [
-            'title' => 'Users Index',
-            'data'  => $result
-        ]);
-    }
+  public function __construct()
+  {
+    $this->UsersModel = new UsersModel;
+    parent::__construct();
+  }
 
-    public function form()
-    {
-        return view('users.form', ['title' => 'Add Form']);
-    }
+  public function index()
+  {
+    $result = $this->UsersModel->getUsers();
 
-    public function save()
-    {
-        $name = $this->request->getPost('name');
+    return view('users.index', [
+      'title' => 'Users Index',
+      'data'  => $result
+    ]);
+  }
 
-        if ($name == null || $name == '') {
-            return redirect('users.form?status=-1');
-        } else {
-            Database::connect()->query("INSERT INTO users VALUES (null, '$name')");
-            return redirect('users.index?status=1');
-        }
-    }
+  public function form()
+  {
+    return view('users.form', ['title' => 'Add Form']);
+  }
 
-    public function delete($id)
-    {
-        Database::connect()->query("DELETE FROM users WHERE id=$id");
-        return redirect('users');
-    }
+  public function save()
+  {
+    $name = $this->request->getPost('name');
 
-    public function detail($id)
-    {
-        $data = Database::connect()->query("SELECT * FROM users WHERE id=$id")->fetch_assoc();
-        return view('users.detail', [
-            'title' => $data['name'],
-            'data'  => $data
-        ]);
+    if ($name == null || $name == '') {
+      return redirect('users.form?status=-1');
+    } else {
+      $this->UsersModel->saveUser($name);
+
+      return redirect('users.index?status=1');
     }
+  }
+
+  public function delete($id)
+  {
+    $this->UsersModel->deleteUser($id);
+
+    return redirect('users');
+  }
+
+  public function detail($id)
+  {
+    $data = $this->UsersModel->getUserById($id);
+
+    return view('users.detail', [
+      'title' => $data['name'],
+      'data'  => $data
+    ]);
+  }
 }

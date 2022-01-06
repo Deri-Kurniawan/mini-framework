@@ -1,3 +1,4 @@
 <?php
 
-require_once 'App/Configs/App.php';
+require_once 'System/constant.php';
+require_once APPPATH . 'Configs/App.php';
