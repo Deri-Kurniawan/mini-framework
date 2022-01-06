@@ -48,14 +48,14 @@ class Route
       if (file_exists(APPPATH . 'Controllers/' . $this->Controller . '.php')) {
         require_once APPPATH . 'Controllers/' . $this->Controller . '.php';
       } else {
-        throw new Exception("You sent request to get controller '{$this->Controller}' but it's not found on your APPPATH.'Controllers/" . $this->Controller . ".php' path");
+        throw new Exception("You sent request to get controller \"{$this->Controller}\" but it\"s not found on your \"" . APPPATH . "\"Controllers/" . $this->Controller . ".php\" path");
       }
     } catch (Exception $e) {
       echo $e->getMessage();
       die;
     }
 
-    $oldController = $this->Controller;
+    $oldControllerName = $this->Controller;
 
     /**
      * assign route property to be an object property
@@ -82,7 +82,7 @@ class Route
     try {
       call_user_func_array([$this->Controller, $this->Method], $this->params);
     } catch (Error $e) {
-      echo "\"{$oldController}\" controller do not have method \"{$this->Method}()\"";
+      echo "\"{$oldControllerName}\" controller do not have method \"{$this->Method}()\"";
     }
   }
 }
