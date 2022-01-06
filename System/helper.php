@@ -65,7 +65,7 @@ if (!function_exists('redirect')) {
    */
   function redirect($url)
   {
-    return header('location:' . $GLOBALS['base_url'] . pathFilter($url));
+    return header('location:' . $GLOBALS['base_url'] . $url);
   }
 }
 
@@ -75,7 +75,7 @@ if (!function_exists('redirectOut')) {
    */
   function redirectOut($url)
   {
-    return header('location:' . pathFilter($url));
+    return header('location:' . $url);
   }
 }
 
