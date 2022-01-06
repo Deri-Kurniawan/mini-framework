@@ -44,15 +44,16 @@ class App
      */
 
     /**
+     * Starting Gobal Session
+     */
+    session_start();
+
+    /**
      * Start Routing Manipulation
      */
     new Route();
   }
 }
-/**
- * Starting Gobal Session
- */
-session_start();
 
 /**
  * Starting your application
