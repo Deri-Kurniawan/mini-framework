@@ -23,9 +23,9 @@ class Users extends BaseController
     ]);
   }
 
-  public function form()
+  public function add()
   {
-    return view('users.form', ['title' => 'Add Form']);
+    return view('users.add', ['title' => 'Add User']);
   }
 
   public function save()
@@ -33,7 +33,7 @@ class Users extends BaseController
     $name = $this->request->getPost('name');
 
     if ($name == null || $name == '') {
-      return redirect('users.form?status=-1');
+      return redirect('users.add?status=-1');
     } else {
       $this->UsersModel->saveUser($name);
 

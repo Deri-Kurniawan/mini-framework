@@ -2,7 +2,7 @@
 <?= addComponent('layouts.components.navbar') ?>
 
 <h1>User Index</h1>
-<a href="<?= baseUrl('users/form'); ?>">+ Add Data +</a>
+<a href="<?= baseUrl('users/add'); ?>">+ Add Data +</a>
 <br>
 
 <?php if (isset($_GET['status']) == 1) {
