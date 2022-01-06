@@ -55,8 +55,6 @@ class Route
       die;
     }
 
-    $oldControllerName = $this->Controller;
-
     /**
      * assign route property to be an object property
      */
@@ -82,7 +80,7 @@ class Route
     try {
       call_user_func_array([$this->Controller, $this->Method], $this->params);
     } catch (Error $e) {
-      echo "\"{$oldControllerName}\" controller do not have method \"{$this->Method}()\"";
+      echo $e->getMessage();
     }
   }
 }
