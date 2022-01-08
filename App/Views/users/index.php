@@ -28,8 +28,9 @@
     <td><?= $d['name'] ?></td>
     <td>
       <a href="<?= baseUrl('users/detail/' . $d['id']); ?>">Detail</a>
-      <a href="<?= baseUrl('users/delete/' . $d['id']); ?>"
-        onclick="return confirm('Are you sure want delete user with name <?= $d['name'] ?> ?')">Delete</a>
+      <form action="<?= baseUrl('users/delete/' . $d['id']); ?>" method="POST">
+        <button type="submit" onclick="return confirm('Are you sure want delete user with name <?= $d['name'] ?> ?')">Delete</button>
+      </form>
     </td>
   </tr>
   <?php endforeach ?>
