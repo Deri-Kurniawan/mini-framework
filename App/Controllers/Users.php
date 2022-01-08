@@ -30,22 +30,29 @@ class Users extends BaseController
 
   public function save()
   {
-    $name = $this->request->getPost('name');
+    $this->request->methodPOST(function(){
+      $name = $this->request->getPost('name');
 
-    if ($name == null || $name == '') {
-      return redirect('users.add?status=-1');
-    } else {
-      $this->UsersModel->saveUser($name);
+      if ($name == null || $name == '') {
+        return redirect('users.add?status=-1');
+      } else {
+        $this->UsersModel->saveUser($name);
 
-      return redirect('users/index?status=1');
-    }
+        return redirect('users/index?status=1');
+      }
+    }, function(){
+      return redirect('users');
+    });
   }
 
   public function delete($id)
   {
-    $this->UsersModel->deleteUser($id);
-
-    return redirect('users');
+    $this->request->methodPOST(function() {
+      $this->UsersModel->deleteUser($id);
+      return redirect('users');
+    }, function() {
+      return redirect('users');
+    });
   }
 
   public function detail($id)
