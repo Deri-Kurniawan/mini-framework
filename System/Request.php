@@ -33,4 +33,36 @@ class Request
   {
     return isset($_FILES[$data]) ? $_FILES[$data] : null;
   }
+
+  /**
+   * only receive GET method
+   */
+  public function methodGET($callback, $callbackError = null)
+  {
+    if (strtoupper($_SERVER['REQUEST_METHOD']) === 'GET') {
+      $callback();
+    } else {
+      if (!empty($callbackError)) {
+        $callbackError();
+      } else {
+        $callbackError();
+      }
+    }
+  }
+
+  /**
+   * only receive POST method
+   */
+  public function methodPOST($callback, $callbackError = null)
+  {
+    if (strtoupper($_SERVER['REQUEST_METHOD']) === 'POST') {
+      $callback();
+    } else {
+      if (!empty($callbackError)) {
+        $callbackError();
+      } else {
+        $callbackError();
+      }
+    }
+  }
 }
