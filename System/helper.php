@@ -1,5 +1,6 @@
 <?php
 require_once APPPATH . 'Configs/App.php';
+require_once APPPATH . 'common.php';
 
 $GLOBALS['baseUrl'] = App::$BaseUrl;
 
