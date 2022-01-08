@@ -2,6 +2,9 @@
 
 This Framework Like CodeIgniter 3, CodeIgniter 4 & laravel 8
 
-# Syntax Style
-Class or Class File Name : PascalCase.
-helper : camelCase.
+## Get Started
+-- DOCS COMING SOON ---
+
+## Syntax Style
+- Class or Class File Name use PascalCase.
+- Non-class use camelCase.
